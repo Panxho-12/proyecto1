@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react'
+import { Persona } from '../Interfaces';
+import { registrarPersona } from '../Firebase/Promesas';
 
 export default function Formulario() {
 
@@ -13,7 +15,10 @@ export default function Formulario() {
             console.log("Apellido:",apellido)
             console.log("Edad",edad)
             alert("Bienvenido"+nombre+" "+apellido+" Edad: "+edad)
-
+            const p:Persona = {
+                nombre,apellido,edad
+            }
+            registrarPersona(p)
         }else{
             setErrorEdad("La edad debe ser positiva")
         }
